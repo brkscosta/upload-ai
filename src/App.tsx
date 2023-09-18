@@ -26,6 +26,9 @@ export function App() {
   const [temperature, setTemperature] = useState(0.5)
   const [videoId, setVideoId] = useState<string | null>(null)
 
+  const baseURL =
+    import.meta.env.VITE_BACKEND_URL + import.meta.env.VITE_API_VERSION
+
   const {
     input,
     setInput,
@@ -34,7 +37,7 @@ export function App() {
     completion,
     isLoading,
   } = useCompletion({
-    api: 'http://localhost:3333/api/v1/ai/complete',
+    api: `${baseURL}/complete`,
     body: {
       videoId,
       temperature,

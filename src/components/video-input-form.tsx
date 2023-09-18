@@ -22,7 +22,7 @@ const statusMessages = {
   generating: 'Transcrevendo...',
   uploading: 'Carregando...',
   success: 'Sucesso!',
-  error: 'Algo não ocorreu bem',
+  error: 'Algo não ocorreu bem 🙁',
 }
 
 interface IVideoInputForm {
@@ -101,7 +101,7 @@ export function VideoInputForm(props: IVideoInputForm) {
 
     const data = new FormData()
 
-    if(!audioFile) {
+    if (!audioFile) {
       console.log('The audio file is null')
       setStatus('error')
       return
@@ -111,28 +111,34 @@ export function VideoInputForm(props: IVideoInputForm) {
 
     setStatus('uploading')
 
-    let videoId = ""
-    await api.post('/api/v1/videos', data)
-    .then((response: AxiosResponse) => {
-      videoId = response.data.id
-      props.onVideoUploaded(videoId)
-    }).catch((reason: AxiosError) => {
-      console.error(reason.message)
-      setStatus('error')
-    })
+    let videoId = ''
+    await api
+      .post(`${import.meta.env.VITE_API_VERSION}/videos`, data)
+      .then((response: AxiosResponse) => {
+        videoId = response.data.id
+      })
+      .catch((reason: AxiosError) => {
+        console.error(reason.message)
+        setStatus('error')
+      })
 
     setStatus('generating')
 
-    await api.post(`/api/v1/videos/${videoId}/transcription`, {
-      prompt,
-    }).then(response => {
-      console.log(response)
-      setStatus('success')
-    })
-    .catch((reason: AxiosError) => {
-      console.log(reason.message)
-      setStatus('error')
-    })
+    await api
+      .post(
+        `${import.meta.env.VITE_API_VERSION}/videos/${videoId}/transcription`,
+        {
+          prompt,
+        },
+      )
+      .then(() => {
+        props.onVideoUploaded(videoId)
+        setStatus('success')
+      })
+      .catch((reason: AxiosError) => {
+        console.log(reason.message)
+        setStatus('error')
+      })
   }
 
   const previewURL = useMemo(() => {
@@ -187,10 +193,10 @@ export function VideoInputForm(props: IVideoInputForm) {
 
       <Button
         data-success={status !== 'success'}
-        data-error={status === 'error'}
+        data-fail={status === 'error'}
         disabled={status !== 'waiting'}
         type="submit"
-        className="w-full gap-2 data-[success=true]:bg-emerald-400 data-[error=true]:bg-red-500"
+        className="w-full gap-2 data-[success=true]:bg-emerald-400 data-[fail=true]:bg-red-500"
       >
         {status === 'waiting' ? (
           <>

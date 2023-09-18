@@ -32,7 +32,7 @@ export function PromptSelect(props: IPromptSelectProps) {
   }
 
   useEffect(() => {
-    api.get('/api/v1/prompts').then((response) => {
+    api.get(`${import.meta.env.VITE_API_VERSION}/prompts`).then((response) => {
       setPrompts(response.data)
     })
   }, [])
@@ -45,8 +45,7 @@ export function PromptSelect(props: IPromptSelectProps) {
       <SelectContent>
         {prompts?.map((prompt, index) => (
           <SelectItem key={index} value={prompt.id}>
-            {' '}
-            {prompt.title}{' '}
+            {prompt.title}
           </SelectItem>
         ))}
       </SelectContent>
