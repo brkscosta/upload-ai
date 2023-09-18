@@ -22,7 +22,7 @@ import {
 } from './components/ui/tooltip'
 import { VideoInputForm } from './components/video-input-form'
 
-export function App() {
+export default function App() {
   const [temperature, setTemperature] = useState(0.5)
   const [videoId, setVideoId] = useState<string | null>(null)
 
