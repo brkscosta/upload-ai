@@ -10,7 +10,7 @@ The Upload AI Web Application is a versatile platform that allows users to uploa
 
 - Video to Audio Conversion: Easily convert uploaded videos into audio files for further processing.
 
-- Audio Transcription: Utilize the OpenAI API to transcribe the audio content from the uploaded videos.
+- Audio Transcription: Uses the OpenAI API to transcribe the audio content from the uploaded videos.
 
 - Content Generation: Generate textual content related to the video based on user input or preferences.
 
@@ -34,7 +34,7 @@ The Upload AI Web Application is a versatile platform that allows users to uploa
    ```bash
     npm install
    ```
-   Note: `pnpm i` recommend
+   Note: `pnpm i` is highly recommended
 
 4. Start the development server:
    ```bash
