@@ -22,7 +22,7 @@ The Upload AI Web Application is a versatile platform that allows users to uploa
 
 1. Clone the repository
    ```bash
-    git clone https://github.com/your-repo/upload-ai-web.git
+    git clone https://github.com/brkscosta/upload-ai-web.git
    ```
 
 2. Navigate to the project directory:
