@@ -52,29 +52,23 @@ export default function App() {
       <header className="px-6 py-3 flex items-center justify-between border-b">
         <h1 className="text-xl font-bold">upload.ui</h1>
 
-        <div className="flex items-center gap-3">
-          <span className="text-small text-muted-foreground">
-            Desenvolvido com ❤️ no NLW
-          </span>
-
-          <Separator orientation="vertical" className="h-6" />
-
-          <TooltipProvider delayDuration={400} skipDelayDuration={500}>
-            <Tooltip>
-              <TooltipTrigger
-                onClick={() => window.open('https://github.com/brkscosta')}
-              >
-                <div className="flex items-center justify-between">
-                  <Github className="w-4 h-4" />
-                  <strong>GitHub</strong>
-                </div>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Visit my GitHub</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        </div>
+        <TooltipProvider delayDuration={400} skipDelayDuration={500}>
+          <Tooltip>
+            <TooltipTrigger
+              onClick={() =>
+                window.open('https://github.com/brkscosta/upload-ai')
+              }
+            >
+              <div className="flex items-center justify-between">
+                <Github className="w-4 h-4" />
+                <strong>GitHub</strong>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Visit my GitHub</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </header>
 
       <main className="flex-1 p-3 flex gap-6">
