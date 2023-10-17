@@ -37,7 +37,7 @@ export default function App() {
     completion,
     isLoading,
   } = useCompletion({
-    api: `${baseURL}/complete`,
+    api: `${baseURL}/ai/complete`,
     body: {
       videoId,
       temperature,
